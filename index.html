@@ -267,6 +267,28 @@
                 gap: 25px;
             }
         }
+
+.scroll-down-message {
+  display: none;
+  font-size: 1rem;
+  color: #d4753a;
+  text-align: center;
+  margin-top: 12px;
+  font-weight: bold;
+  animation: bounceScroll 2.5s infinite;
+}
+
+@media (max-width: 768px) {
+  .scroll-down-message {
+    display: block;
+  }
+}
+
+@keyframes bounceScroll {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
     </style>
 </head>
 <body>
@@ -422,6 +444,11 @@
                 </svg>
             </div>
         </div>
+
+<div class="scroll-down-message">Scroll down for more ↓</div>
+
+
+
 
         <!-- Museum Section -->
         <div class="museum-section">
