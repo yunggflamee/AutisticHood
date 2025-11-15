@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Autistic Hood Museum</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -13,13 +13,11 @@
             min-height: 100vh;
         }
         body::before {
-            content: '';
+            content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(circle at 20% 50%, rgba(255,200,124,0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(255,150,100,0.15) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(255, 200, 124, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255, 150, 100, 0.15) 0%, transparent 50%);
+            pointer-events:none; z-index:0;
         }
         .container {
             max-width: 900px;
@@ -31,12 +29,12 @@
         header {
             margin-top: 38px;
             margin-bottom: 45px;
-            background: rgba(255,245,230,0.7);
+            background: rgba(255, 245, 230, 0.7);
             border-radius: 18px;
             padding: 34px 16px 35px 16px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.07);
             text-align: center;
-            border: 3px solid rgba(255,200,100,0.13);
+            border: 3px solid rgba(255, 200, 100, 0.13);
         }
         .header-space {
             min-height: 72px;
@@ -48,67 +46,79 @@
             text-shadow: 2px 2px 4px rgba(255,255,255,0.85);
             letter-spacing: 0.02em;
         }
+
+        /* New gallery styles for small icons and zoom */
         .gallery {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            margin: 0 0 15px 0;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 14px;
             justify-items: center;
             align-items: center;
         }
         .gallery-item {
-            background: rgba(255,255,255,0.92);
-            padding: 18px 16px 24px 16px;
-            border-radius: 18px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            transition: transform 0.5s cubic-bezier(.22,.68,.54,1.09), box-shadow 0.46s;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            animation: fadein 1s both;
-        }
-        .gallery-item:hover {
-            transform: scale(1.03) rotate(-1.5deg);
-            box-shadow: 0 14px 35px rgba(214,148,58,0.13);
-        }
-        .gallery-item img, .gallery-item video {
-            max-width: 100%;
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 11px;
-            box-shadow: 0 3px 16px rgba(160,110,30,0.08);
-            background: #f5e6cb;
-        }
-        .gallery-item .caption {
-            font-size: 1.04rem;
-            color: #a8603c;
-            margin-top: 5px;
-        }
-        @keyframes fadein {
-            from {opacity:0; transform: translateY(35px) scale(0.97);}
-            to {opacity:1; transform: translateY(0) scale(1);}
-        }
-        .back-button {
-            display: inline-block;
-            margin-top: 18px;
-            padding: 10px 25px;
-            font-size: 1rem;
-            font-family: 'Comic Sans MS', sans-serif;
-            font-weight: bold;
-            background: linear-gradient(135deg, #87ceeb, #4da6d6);
-            color: white;
-            border: none;
-            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(77,166,214,0.15);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            margin-bottom: 8px;
-            margin-left: 5px;
+            text-align: center;
+            user-select: none;
         }
-        .back-button:hover {
-            transform: translateY(-2.5px);
-            box-shadow: 0 12px 36px rgba(77,166,214,0.18),0 2.9px rgba(0,0,0,0.01);
+        .gallery-item img,
+        .gallery-item video {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease;
+        }
+        .gallery-item:hover img,
+        .gallery-item:hover video {
+            transform: scale(1.08);
+        }
+        .caption {
+            margin-top: 6px;
+            font-size: 0.75rem;
+            color: #a8603c;
+            font-weight: 500;
+        }
+
+        /* Overlay styles */
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(2px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        .overlay img,
+        .overlay video {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 14px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+            outline: none;
+        }
+        /* Close button */
+        .close-btn {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            font-size: 28px;
+            color: white;
+            background: rgba(80,80,80,0.6);
+            border-radius: 12px;
+            width: 38px;
+            height: 38px;
+            text-align: center;
+            line-height: 38px;
+            cursor: pointer;
+            user-select: none;
+            z-index: 10001;
+            font-weight: bold;
+        }
+        .close-btn:hover {
+            background: rgba(140,140,140,0.8);
         }
         footer {
             text-align: center;
@@ -118,12 +128,12 @@
             font-size: 1.06rem;
         }
         @media (max-width: 800px) {
-            .gallery { grid-template-columns: 1fr; gap: 24px; }
+            .gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
         }
         @media (max-width: 480px) {
             header {padding: 16px 3px;}
-            .gallery {gap: 13px;}
-            .gallery-item {padding: 8px 4px 16px 4px;}
+            .gallery { gap: 10px; }
+            .gallery-item img, .gallery-item video { width: 64px; height: 64px; }
             footer {padding: 13px 2px 0 2px;}
         }
     </style>
@@ -137,75 +147,75 @@
         </header>
         <a href="index.html" class="back-button">← Back to Home</a>
         <div class="gallery">
-            
-              <div class="gallery-item" style="animation-delay: 0.40s;">
-                <video controls loop autoplay muted poster="IMG_20251115_152601_751.jpg">
-                    <source src="assets/VID_20251115_015632_380.mp4" type="video/mp4">
-                    <source src="yourvideo.webm" type="video/webm">
-                    Video not supported.
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Expand video: First meet">
+                <video controls loop muted poster="assets/IMG_20251115_152601_751.jpg" width="72" height="72">
+                    <source src="assets/VID_20251115_015632_380.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
                 </video>
                 <div class="caption">First meet</div>
-
-            <div class="gallery-item" style="animation-delay: 0.12s;">
-                <img src="assets/IMG_20251115_152626_381.jpg" alt="Chat Screenshot 1">
-                <div class="caption">Reddit DM with Adi.</div>
             </div>
 
-            <div class="gallery-item" style="animation-delay: 0.26s;">
-                <img src="assets/IMG_20251115_152601_751.jpg" alt="Chat Screenshot 2">
-                <div class="caption">The time when it began.</div>
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Expand image: Reddit DM with Adi">
+                <img src="assets/IMG_20251115_152626_381.jpg" alt="Reddit DM with Adi" />
+                <div class="caption">Reddit DM with Adi</div>
             </div>
-          
-            <div class="gallery-item" style="animation-delay: 0.12s;">
-                <img src="assets/akbaat1.jpg" alt="Chat Screenshot 1">
+
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Expand image: The time when it began">
+                <img src="assets/IMG_20251115_152601_751.jpg" alt="The time when it began" />
+                <div class="caption">The time when it began</div>
+            </div>
+
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Expand image: The legendary ak baat">
+                <img src="assets/akbaat1.jpg" alt="The legendary ak baat" />
                 <div class="caption">The legendary "ak baat"</div>
             </div>
 
-            <div class="gallery-item" style="animation-delay: 0.12s;">
-                <img src="assets/akbaat2" alt="Chat Screenshot 1">
-                <div class="caption">The legendary "ak baat 2".</div>
+            <div class="gallery-item" tabindex="0" role="button" aria-label="Expand image: The legendary ak baat 2">
+                <img src="assets/akbaat2" alt="The legendary ak baat 2" />
+                <div class="caption">The legendary "ak baat 2"</div>
             </div>
-
         </div>
         <footer>
             <p>Autistic Hood Museum</p>
         </footer>
     </div>
+
     <script>
-        // fade-in animation for items on scroll
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        let active = false;
-        window.addEventListener('scroll', () => {
-            galleryItems.forEach((item, idx) => {
-                let rect = item.getBoundingClientRect();
-                if(rect.top < window.innerHeight - 80) {
-                    item.style.opacity = 1;
-                    item.style.transform = 'translateY(0) scale(1)';
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
+
+                let clone;
+                if (item.querySelector('img')) {
+                    clone = item.querySelector('img').cloneNode(true);
+                } else if (item.querySelector('video')) {
+                    clone = document.createElement('video');
+                    clone.src = item.querySelector('video source').src;
+                    clone.controls = true;
+                    clone.autoplay = true;
+                    clone.loop = true;
+                    clone.muted = true;
                 }
+
+                overlay.appendChild(clone);
+                document.body.appendChild(overlay);
+
+                const closeBtn = document.createElement('div');
+                closeBtn.className = 'close-btn';
+                closeBtn.textContent = '×';
+                document.body.appendChild(closeBtn);
+
+                function close() {
+                    document.body.removeChild(overlay);
+                    document.body.removeChild(closeBtn);
+                }
+                closeBtn.addEventListener('click', close);
+                overlay.addEventListener('click', close);
+
+                clone.addEventListener('click', e => e.stopPropagation());
             });
         });
-        // Floating soft particles (same cozy style)
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.position = 'fixed';
-            particle.style.width = '9px';
-            particle.style.height = '9px';
-            particle.style.borderRadius = '50%';
-            particle.style.background = ['#ffd89b','#ffb366','#faa366','#daa8b8','#c9a0dc'][Math.floor(Math.random()*5)];
-            particle.style.left = Math.random()*window.innerWidth + 'px';
-            particle.style.top = window.innerHeight + 'px';
-            particle.style.pointerEvents = 'none';
-            particle.style.opacity = '0.53';
-            particle.style.transition = 'all 4.3s ease-out';
-            document.body.appendChild(particle);
-            setTimeout(() => {
-                particle.style.top = '-20px';
-                particle.style.opacity = '0';
-                particle.style.transform = `translateX(${(-1+2*Math.random())*110}px)`;
-            }, 90);
-            setTimeout(() => { particle.remove(); }, 4350);
-        }
-        setInterval(createParticle, 1050);
     </script>
 </body>
 </html>
