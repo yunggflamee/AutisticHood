@@ -208,7 +208,7 @@
             display: inline-block;
             padding: 15px 40px;
             font-size: clamp(1rem, 2vw, 1.3rem);
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Comic Sans MS', sans-serif;
             font-weight: bold;
             background: linear-gradient(135deg, #ff7675, #d63031);
             color: white;
@@ -281,23 +281,30 @@
             <div class="member member-1">
                 <div class="name-tag" style="background: linear-gradient(135deg, #87ceeb, #4da6d6); color: white; border-color: #4da6d6;">Akshay</div>
                 <svg class="stick-figure" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Head -->
-                    <circle cx="50" cy="20" r="15" fill="none" stroke="#4da6d6" stroke-width="3"/>
-                    <!-- Happy face -->
-                    <circle cx="45" cy="18" r="2" fill="#4da6d6"/>
-                    <circle cx="55" cy="18" r="2" fill="#4da6d6"/>
-                    <path d="M 42 24 Q 50 28 58 24" fill="none" stroke="#4da6d6" stroke-width="2"/>
-                    <!-- Body -->
-                    <line x1="50" y1="35" x2="50" y2="80" stroke="#4da6d6" stroke-width="3"/>
-                    <!-- Arms - relaxed -->
-                    <line x1="50" y1="45" x2="30" y2="60" stroke="#4da6d6" stroke-width="3"/>
-                    <line x1="50" y1="45" x2="70" y2="60" stroke="#4da6d6" stroke-width="3"/>
-                    <!-- Legs - standing cool -->
-                    <line x1="50" y1="80" x2="35" y2="110" stroke="#4da6d6" stroke-width="3"/>
-                    <line x1="50" y1="80" x2="65" y2="110" stroke="#4da6d6" stroke-width="3"/>
-                    <!-- Feet -->
-                    <line x1="35" y1="110" x2="30" y2="115" stroke="#4da6d6" stroke-width="3"/>
-                    <line x1="65" y1="110" x2="70" y2="115" stroke="#4da6d6" stroke-width="3"/>
+    <circle cx="50" cy="20" r="15" fill="none" stroke="#4da6d6" stroke-width="3"/>
+    <!-- Happy face -->
+    <circle cx="45" cy="18" r="2" fill="#4da6d6"/>
+    <circle cx="55" cy="18" r="2" fill="#4da6d6"/>
+    <path d="M 42 24 Q 50 28 58 24" fill="none" stroke="#4da6d6" stroke-width="2"/>
+    <!-- Body -->
+    <line x1="50" y1="35" x2="50" y2="80" stroke="#4da6d6" stroke-width="3"/>
+    <!-- Left Arm - relaxed -->
+    <line x1="50" y1="45" x2="30" y2="60" stroke="#4da6d6" stroke-width="3"/>
+    <!-- Right Arm - slightly up to hold cig -->
+    <line x1="50" y1="45" x2="70" y2="60" stroke="#4da6d6" stroke-width="3"/>
+    <!-- Cigarette in right hand -->
+    <rect x="70" y="59" width="10" height="3" rx="1" fill="#ededed" stroke="#bbb" stroke-width="0.5" />
+    <rect x="79.5" y="59.6" width="2" height="1" rx="0.4" fill="#ff9c49" stroke="#fc5757" stroke-width="0.5" />
+    <!-- Smoke (animated) -->
+    <path d="M82 59 Q86 56 84 50 Q83 48 87 45" stroke="#bbb" stroke-width="1.2" fill="none" opacity="0.85">
+      <animate attributeName="d" values="M82 59 Q86 56 84 50 Q83 48 87 45;M82 59 Q87 58 85 48 Q84 45 89 47;M82 59 Q86 56 84 50 Q83 48 87 45" dur="2.3s" repeatCount="indefinite"/>
+    </path>
+    <!-- Legs - standing cool -->
+    <line x1="50" y1="80" x2="35" y2="110" stroke="#4da6d6" stroke-width="3"/>
+    <line x1="50" y1="80" x2="65" y2="110" stroke="#4da6d6" stroke-width="3"/>
+    <!-- Feet -->
+    <line x1="35" y1="110" x2="30" y2="115" stroke="#4da6d6" stroke-width="3"/>
+    <line x1="65" y1="110" x2="70" y2="115" stroke="#4da6d6" stroke-width="3"/>
                 </svg>
             </div>
 
