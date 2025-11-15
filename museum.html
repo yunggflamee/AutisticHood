@@ -5,63 +5,194 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autistic Hood Museum - Our Memories</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(135deg, #f5d5a8 0%, #f9e5b8 50%, #e8d4a0 100%);
             background-attachment: fixed;
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
         }
-
-        /* Cozy background elements */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(255, 200, 124, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 150, 100, 0.2) 0%, transparent 50%);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 20% 50%, rgba(255,200,124,0.3) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(255,150,100,0.15) 0%, transparent 50%);
             pointer-events: none;
             z-index: 0;
         }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.05) 10px, rgba(255, 255, 255, 0.05) 20px);
-            pointer-events: none;
-            z-index: 0;
-        }
-
         .container {
-            max-width: 1400px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px 40px 20px;
             position: relative;
             z-index: 1;
         }
-
         header {
+            margin-top: 38px;
+            margin-bottom: 45px;
+            background: rgba(255,245,230,0.7);
+            border-radius: 18px;
+            padding: 34px 16px 35px 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.07);
             text-align: center;
-            padding: 30px 20px;
-            background: rgba(255, 245, 230, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            margin-bottom: 50px;
-            box-shadow: 0 8px 32px rgba(0)
+            border: 3px solid rgba(255,200,100,0.13);
         }
+        .header-space {
+            min-height: 72px;
+            margin-bottom: 22px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #d4753a;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.85);
+            letter-spacing: 0.02em;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin: 0 0 15px 0;
+            justify-items: center;
+            align-items: center;
+        }
+        .gallery-item {
+            background: rgba(255,255,255,0.92);
+            padding: 18px 16px 24px 16px;
+            border-radius: 18px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            transition: transform 0.5s cubic-bezier(.22,.68,.54,1.09), box-shadow 0.46s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadein 1s both;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03) rotate(-1.5deg);
+            box-shadow: 0 14px 35px rgba(214,148,58,0.13);
+        }
+        .gallery-item img, .gallery-item video {
+            max-width: 100%;
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 11px;
+            box-shadow: 0 3px 16px rgba(160,110,30,0.08);
+            background: #f5e6cb;
+        }
+        .gallery-item .caption {
+            font-size: 1.04rem;
+            color: #a8603c;
+            margin-top: 5px;
+        }
+        @keyframes fadein {
+            from {opacity:0; transform: translateY(35px) scale(0.97);}
+            to {opacity:1; transform: translateY(0) scale(1);}
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
+            background: linear-gradient(135deg, #87ceeb, #4da6d6);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(77,166,214,0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-bottom: 8px;
+            margin-left: 5px;
+        }
+        .back-button:hover {
+            transform: translateY(-2.5px);
+            box-shadow: 0 12px 36px rgba(77,166,214,0.18),0 2.9px rgba(0,0,0,0.01);
+        }
+        footer {
+            text-align: center;
+            padding: 34px 20px 0 20px;
+            margin-top: 32px;
+            color: #8b5a2b;
+            font-size: 1.06rem;
+        }
+        @media (max-width: 800px) {
+            .gallery { grid-template-columns: 1fr; gap: 24px; }
+        }
+        @media (max-width: 480px) {
+            header {padding: 16px 3px;}
+            .gallery {gap: 13px;}
+            .gallery-item {padding: 8px 4px 16px 4px;}
+            footer {padding: 13px 2px 0 2px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏛️ Museum of Squad Memories 🏛️</h1>
+            <div class="header-space"></div>
+            <!-- You can type your intro here! -->
+        </header>
+        <a href="index.html" class="back-button">← Back to Squad</a>
+        <div class="gallery">
+            <div class="gallery-item" style="animation-delay: 0.12s;">
+                <img src="IMG_20251115_152626_381.jpg" alt="Chat Screenshot 1">
+                <div class="caption">Reddit DM with Adi (first chat! 📨)</div>
+            </div>
+            <div class="gallery-item" style="animation-delay: 0.26s;">
+                <img src="IMG_20251115_152601_751.jpg" alt="Chat Screenshot 2">
+                <div class="caption">Funny general group chat moment</div>
+            </div>
+            <div class="gallery-item" style="animation-delay: 0.40s;">
+                <video controls loop autoplay muted poster="IMG_20251115_152601_751.jpg">
+                    <source src="yourvideo.mp4" type="video/mp4">
+                    <source src="yourvideo.webm" type="video/webm">
+                    Video not supported.
+                </video>
+                <div class="caption">Squad video memory (yourvideo.mp4)</div>
+            </div>
+        </div>
+        <footer>
+            <p>💜 Autistic Hood Museum - Where Memories Live Forever 💜</p>
+        </footer>
+    </div>
+    <script>
+        // fade-in animation for items on scroll
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        let active = false;
+        window.addEventListener('scroll', () => {
+            galleryItems.forEach((item, idx) => {
+                let rect = item.getBoundingClientRect();
+                if(rect.top < window.innerHeight - 80) {
+                    item.style.opacity = 1;
+                    item.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+        // Floating soft particles (same cozy style)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '9px';
+            particle.style.height = '9px';
+            particle.style.borderRadius = '50%';
+            particle.style.background = ['#ffd89b','#ffb366','#faa366','#daa8b8','#c9a0dc'][Math.floor(Math.random()*5)];
+            particle.style.left = Math.random()*window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
+            particle.style.pointerEvents = 'none';
+            particle.style.opacity = '0.53';
+            particle.style.transition = 'all 4.3s ease-out';
+            document.body.appendChild(particle);
+            setTimeout(() => {
+                particle.style.top = '-20px';
+                particle.style.opacity = '0';
+                particle.style.transform = `translateX(${(-1+2*Math.random())*110}px)`;
+            }, 90);
+            setTimeout(() => { particle.remove(); }, 4350);
+        }
+        setInterval(createParticle, 1050);
+    </script>
+</body>
+</html>
