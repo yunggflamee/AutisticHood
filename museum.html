@@ -136,6 +136,30 @@
             .gallery-item img, .gallery-item video { width: 64px; height: 64px; }
             footer {padding: 13px 2px 0 2px;}
         }
+
+        .back-button {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    background: linear-gradient(135deg, #87ceeb, #4da6d6);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(77, 166, 214, 0.15);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-bottom: 8px;
+    margin-left: 5px;
+}
+.back-button:hover {
+    transform: translateY(-2.5px);
+    box-shadow: 0 12px 36px rgba(77, 166, 214, 0.18), 0 2.9px rgba(0, 0, 0, 0.01);
+}
+
     </style>
 </head>
 <body>
@@ -147,13 +171,6 @@
         </header>
         <a href="index.html" class="back-button">← Back to Home</a>
         <div class="gallery">
-            <div class="gallery-item" tabindex="0" role="button" aria-label="Expand video: First meet">
-                <video controls loop muted poster="assets/IMG_20251115_152601_751.jpg" width="72" height="72">
-                    <source src="assets/VID_20251115_015632_380.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <div class="caption">First meet</div>
-            </div>
 
             <div class="gallery-item" tabindex="0" role="button" aria-label="Expand image: Reddit DM with Adi">
                 <img src="assets/IMG_20251115_152626_381.jpg" alt="Reddit DM with Adi" />
